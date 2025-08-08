@@ -11,7 +11,7 @@ type Content struct {
 	Tags string `gorm:"tags"`
 	Status string `gorm:"status"`
 	CategoryID int64 `gorm:"category_id"`
-	CreatedByIdD int64 `gorm:"created_by_id"`
+	CreatedByID int64 `gorm:"created_by_id"`
 	Category Category `gorm:"foreignKey:CategoryID"`
 	User User `gorm:"foreignKey:CreatedByID"`
 	CreatedAt time.Time `gorm:"created_at"`

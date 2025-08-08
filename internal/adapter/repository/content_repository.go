@@ -33,7 +33,7 @@ func (c *contentRepository) CreateContent(ctx context.Context, req entity.Conten
 		Tags:        tags,
 		Status:      req.Status,
 		CategoryID:  req.CategoryID,
-		CreatedByIdD: req.CreatedByID,
+		CreatedByID: req.CreatedByID,
 	}
 
 	err = c.db.Create(&modelContent).Error
@@ -79,7 +79,7 @@ func (c *contentRepository) GetContentByID(ctx context.Context, id int64) (*enti
 		Tags: tags,
 		Status: modelContent.Status,
 		CategoryID: modelContent.CategoryID,
-		CreatedByID: modelContent.CreatedByIdD,
+		CreatedByID: modelContent.CreatedByID,
 		CreatedAt: modelContent.CreatedAt,
 		Category: entity.CategoryEntity{
 			ID: modelContent.Category.ID,
@@ -118,7 +118,7 @@ func (c *contentRepository) GetContents(ctx context.Context) ([]entity.ContentEn
 			Tags: tags,
 			Status: val.Status,
 			CategoryID: val.CategoryID,
-			CreatedByID: val.CreatedByIdD,
+			CreatedByID: val.CreatedByID,
 			CreatedAt: val.CreatedAt,
 			Category: entity.CategoryEntity{
 				ID: val.Category.ID,
@@ -147,7 +147,7 @@ func (c *contentRepository) UpdateContent(ctx context.Context, req entity.Conten
 		Tags:        tags,
 		Status:      req.Status,
 		CategoryID:  req.CategoryID,
-		CreatedByIdD: req.CreatedByID,
+		CreatedByID: req.CreatedByID,
 	}
 
 	err = c.db.Where("id = ?", req.ID).Updates(&modelContent).Error
@@ -156,7 +156,7 @@ func (c *contentRepository) UpdateContent(ctx context.Context, req entity.Conten
 		log.Errorw(code, err)
 		return err
 	}
-	
+
 	return nil
 }
 

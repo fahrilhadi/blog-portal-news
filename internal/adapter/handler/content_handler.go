@@ -3,6 +3,7 @@ package handler
 import (
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/fahrilhadi/blog-portal-news/internal/adapter/handler/request"
@@ -60,12 +61,13 @@ func (ch *contentHandler) CreateContent(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(errorResp)
 	}
 
+	tags := strings.Split(req.Tags, ",")
 	reqEntity := entity.ContentEntity{
 		Title:       req.Title,
 		Excerpt:     req.Excerpt,
 		Description: req.Description,
 		Image:       req.Image,
-		Tags:        req.Tags,
+		Tags:        tags,
 		Status:      req.Status,
 		CategoryID:  req.CategoryID,
 		CreatedByID: int64(userID),
@@ -276,13 +278,14 @@ func (ch *contentHandler) UpdateContent(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(errorResp)
 	}
 
+	tags := strings.Split(req.Tags, ",")
 	reqEntity := entity.ContentEntity{
 		ID: 		contentID,
 		Title:       req.Title,
 		Excerpt:     req.Excerpt,
 		Description: req.Description,
 		Image:       req.Image,
-		Tags:        req.Tags,
+		Tags:        tags,
 		Status:      req.Status,
 		CategoryID:  req.CategoryID,
 		CreatedByID: int64(userID),
@@ -339,7 +342,7 @@ func (ch *contentHandler) UploadImageR2(c *fiber.Ctx) error {
 
 	req.Image = fmt.Sprintf("./temp/content/%s", file.Filename)
 	reqEntity := entity.FileUploadEntity{
-		Name: fmt.Sprintf("%d-%d", claims.UserID, time.Now().UnixNano()),
+		Name: fmt.Sprintf("%d-%d", int64(claims.UserID), time.Now().UnixNano()),
 		Path: req.Image,
 	}
 
