@@ -10,7 +10,7 @@ import (
 )
 
 type UserService interface {
-	UpdatePassword(ctx context.Context, newPass string, id string) error
+	UpdatePassword(ctx context.Context, newPass string, id int64) error
 	GetUserByID(ctx context.Context, id int64) (*entity.UserEntity, error)
 }
 
@@ -31,7 +31,7 @@ func (u *userService) GetUserByID(ctx context.Context, id int64) (*entity.UserEn
 }
 
 // UpdatePassword implements UserService.
-func (u *userService) UpdatePassword(ctx context.Context, newPass string, id string) error {
+func (u *userService) UpdatePassword(ctx context.Context, newPass string, id int64) error {
 	password, err := conv.HashPassword(newPass)
 	if err != nil {
 		code := "[SERVICE] UpdatePassword - 1"

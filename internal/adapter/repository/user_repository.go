@@ -10,7 +10,7 @@ import (
 )
 
 type UserRepository interface {
-	UpdatePassword(ctx context.Context, newPass string, id string) error
+	UpdatePassword(ctx context.Context, newPass string, id int64) error
 	GetUserByID(ctx context.Context, id int64) (*entity.UserEntity, error)
 }
 
@@ -36,7 +36,7 @@ func (u *userRepository) GetUserByID(ctx context.Context, id int64) (*entity.Use
 }
 
 // UpdatePassword implements UserRepository.
-func (u *userRepository) UpdatePassword(ctx context.Context, newPass string, id string) error {
+func (u *userRepository) UpdatePassword(ctx context.Context, newPass string, id int64) error {
 	err = u.db.Model(&model.User{}).Where("id = ?", id).Update("password", newPass).Error
 	if err != nil {
 		code := "[REPOSITORY] UpdatePassword - 1"
