@@ -40,6 +40,199 @@
                         }
                     }
                 }
+            },
+            "DefaultResponse": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "boolean",
+                                "example": true
+                            },
+                            "message": {
+                                "type": "string",
+                                "example": "Success"
+                            }
+                        }
+                    }
+                }
+            },
+            "LoginRequest": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "user@example.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "password123"
+                    }
+                }
+            },
+            "CategoryRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "Technology"
+                    }
+                }
+            },
+            "ContentRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "Judul"
+                    },
+                    "excerpt": {
+                        "type": "string",
+                        "example": "judul"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "judul"
+                    },
+                    "tags": {
+                        "type": "string",
+                        "example": "judul,data"
+                    },
+                    "category_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "DRAFT"
+                    },
+                    "image": {
+                        "type": "string",
+                        "example": "https://image.co"
+                    }
+                }
+            },
+            "UpdatePasswordRequest": {
+                "type": "object",
+                "properties": {
+                    "current_password": {
+                        "type": "string",
+                        "example": "pass"
+                    },
+                    "new_password": {
+                        "type": "string",
+                        "example": "password123"
+                    },
+                    "confirm_password": {
+                        "type": "string",
+                        "example": "password123"
+                    }
+                }
+            },
+            "AuthResponse": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "boolean",
+                                "example": true
+                            },
+                            "message": {
+                                "type": "string",
+                                "example": "Success"
+                            }
+                        }
+                    },
+                    "access_token": {
+                        "type": "string",
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                    },
+                    "expires_at": {
+                        "type": "integer",
+                        "example": 12121212
+                    }
+                }
+            },
+            "CategoryResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Category 1"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "example": "category-1"
+                    },
+                    "created_by_name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    }
+                }
+            },
+            "ContentResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Category 1"
+                    },
+                    "excerpt": {
+                        "type": "string",
+                        "example": "category-1"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "category"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "PUBLISH"
+                    },
+                    "image": {
+                        "type": "string",
+                        "example": "https://image.co"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "data"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "category_name": {
+                        "type": "string",
+                        "example": "satu"
+                    },
+                    "author": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "category_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_by_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                }
             }
         }
     }
